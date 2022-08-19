@@ -1,2 +1,2 @@
 # simplefs
-A simple filesystem implemented using libfuse
+A very simple filesystem implemented using FUSE
