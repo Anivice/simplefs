@@ -38,9 +38,10 @@ add_library(simplefs STATIC
         src/debug/simple_err.cpp    src/include/simple_err.h
         src/fs/blkmem.cpp           src/include/blkmem.h
         src/fs/io.cpp               src/include/io.h
-        src/include/simplefs.h
-        src/fs/utils.cpp
+        src/fs/simplefs.cpp         src/include/simplefs.h
+        src/fs/utils.cpp            src/include/utils.h
         src/fs/bitmap_ctl.cpp       src/include/bitmap_ctl.h
+        src/debug/log.cpp           src/include/log.h
         )
 target_include_directories(simplefs PUBLIC src/include)
 target_link_libraries(simplefs      PUBLIC ${LIBELF_LIBRARIES})
@@ -60,3 +61,4 @@ add_utils(fsck.simplefs)
 _add_test(ftrace    "function trace system")
 _add_test(blkmem    "block cache system")
 _add_test(bitmap    "bitmap test")
+_add_test(log       "test for runtime log")

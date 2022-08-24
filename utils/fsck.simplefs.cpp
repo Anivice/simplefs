@@ -2,27 +2,8 @@
 #include <io.h>
 #include <simple_err.h>
 #include <iostream>
-#include <openssl/sha.h>
 #include <blkmem.h>
-#include <cstring>
-
-bool if_header_valid(simplefs_head_t head)
-{
-    if (head.content.magic != SIMPLEFS_MAGIC)
-    {
-        return false;
-    }
-
-    unsigned char hash [SHA256_DIGEST_LENGTH] { };
-    sha256sum((unsigned char*)&head.content, sizeof(head.content), hash);
-
-    if (!!memcmp(hash, head._hash_check_, SHA256_DIGEST_LENGTH))
-    {
-        return false;
-    }
-
-    return true;
-}
+#include <utils.h>
 
 int main(int argc, char ** argv)
 {

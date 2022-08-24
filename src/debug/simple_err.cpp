@@ -179,6 +179,7 @@ simple_error_t::simple_error_t(uint64_t _error_code, const std::string& extra)
         ERROR_SWITCH_CASE(SHORT_WRITE);
         ERROR_SWITCH_CASE(SHORT_READ);
         ERROR_SWITCH_CASE(OUTOF_BOUNDARY);
+        ERROR_SWITCH_CASE(NOT_SIMPLEFS);
         default :
             output << "(Unknown error)";
             break;

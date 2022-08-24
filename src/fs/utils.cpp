@@ -2,6 +2,9 @@
 #include <iostream>
 #include <simple_err.h>
 #include <sstream>
+#include <cstring>
+#include <openssl/sha.h>
+#include <utils.h>
 
 void output_head_info(simplefs_head_t head)
 {
@@ -71,4 +74,22 @@ void output_head_info(simplefs_head_t head)
     {
         std::cerr << err.what() << std::endl;
     }
+}
+
+bool if_header_valid(simplefs_head_t head)
+{
+    if (head.content.magic != SIMPLEFS_MAGIC)
+    {
+        return false;
+    }
+
+    unsigned char hash [SHA256_DIGEST_LENGTH] { };
+    sha256sum((unsigned char*)&head.content, sizeof(head.content), hash);
+
+    if (!!memcmp(hash, head._hash_check_, SHA256_DIGEST_LENGTH))
+    {
+        return false;
+    }
+
+    return true;
 }

@@ -2,6 +2,7 @@
 #include <io.h>
 #include <simple_err.h>
 #include <iostream>
+#include <utils.h>
 
 simplefs_head_t generate_information(off64_t device_block_count)
 {

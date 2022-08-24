@@ -41,6 +41,4 @@ public:
     [[nodiscard]] bool if_dirty() const { return dirty; }
 };
 
-const unsigned char * sha256sum(const unsigned char * data, uint32_t length, unsigned char * buffer);
-
 #endif //SIMPLEFS_BLKMEM_H
